@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
+  background:linear-gradient(to top, rgb(0, 183, 255), rgb(0, 132, 255));
+}
+.wrapper{
+  max-width: 1100px;
+  width: 100%;
+}
+.card{
+  scroll-snap-align: start;
+  height: 340px;
+  /* margin-right: 100px; */
+  /* width: 200px; */
 }
 
-.App-link {
-  color: #61dafb;
+.wrapper .carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: 0;
+}
+.carousel::-webkit-scrollbar{
+  display: none;
+}
+.carousel:where(.card){
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.carousel.no-transition{
+  scroll-behavior: auto;
+}
+
+.carousel.dragging{
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+@media screen and (max-width: 900px){
+  .wrapper .carousel {
+    grid-auto-columns: calc((100%/2) - 9px);
   }
 }
+
+
+@media screen and (max-width: 600px){
+  .wrapper .carousel {
+    grid-auto-columns: calc(100%);
+  }
+  .wrapper{
+    max-width: 300px;
+  }
+}
+
