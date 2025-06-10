@@ -8,7 +8,6 @@ export default function App() {
    <BrowserRouter>
    <Routes>
       <Route path='/' element={<CardSlider/>}/>
-      
       <Route path='/banner' element={<BannerSlider/>}/>
    </Routes>
    </BrowserRouter>
